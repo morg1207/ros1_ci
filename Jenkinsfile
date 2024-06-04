@@ -14,11 +14,11 @@ pipeline {
 
         stage('Will check if we need to clone or just pull') {
             steps {
-                sh 'cd ~/ros_jenkins_ws/src'
+                sh 'cd ~/catkin_ws/src'
                 sh '''
                     #!/bin/bash
                     if [ ! -d "ros1_ci" ]; then
-                        git clone https://github.com/morg1207/ros1_ci.git
+                        git clone -b master https://github.com/morg1207/ros1_ci.git
                         echo 'no existe el repositorio'
                     else
                         cd ros1_ci
@@ -36,7 +36,7 @@ pipeline {
                 sudo service docker start
                 sudo usermod -aG docker $USER
                 newgrp docker
-                cd ~/ros_jenkins_ws/src/ros1_ci
+                cd ~/catkin_ws/src/ros1_ci
                 sudo docker build -t tortoisebot_test .
                 '''
             }
