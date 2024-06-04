@@ -26,10 +26,10 @@ pipeline {
                 sh 'cd ~/ros_jenkins_ws/src'
                 sh '''
                     #!/bin/bash
-                    if [ ! -d "ros1_ci" ]; then
+                    if [ ! -d "ros1_ci_1" ]; then
                         git clone https://github.com/morg1207/ros1_ci_1.git
                     else
-                        cd ros1_ci
+                        cd ros1_ci_1
                         git pull origin master
                     fi
                     '''
@@ -43,7 +43,7 @@ pipeline {
                 sudo service docker start
                 sudo usermod -aG docker $USER
                 newgrp docker
-                cd ~/ros_jenkins_ws/src/ros1_ci
+                cd ~/ros_jenkins_ws/src/ros1_ci_1
                 sudo docker build -t tortoisebot_test .
                 '''
             }
