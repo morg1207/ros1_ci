@@ -8,7 +8,7 @@ pipeline {
                 script {
                     properties([pipelineTriggers([pollSCM('* * * * *')])])
                 }
-                git branch: 'master', url: 'https://github.com/morg1207/ros1_ci.git'
+                git branch: 'main', url: 'https://github.com/morg1207/ros1_ci.git'
             }
         }
 
@@ -18,11 +18,11 @@ pipeline {
                 sh '''
                     #!/bin/bash
                     if [ ! -d "ros1_ci" ]; then
-                        git clone -b master https://github.com/morg1207/ros1_ci.git
+                        git clone https://github.com/morg1207/ros1_ci.git
                         echo 'no existe el repositorio'
                     else
                         cd ros1_ci
-                        git pull origin master
+                        git pull origin main
                         echo 'existe el repositorio'
                     fi
                     '''
