@@ -28,9 +28,11 @@ pipeline {
                     #!/bin/bash
                     if [ ! -d "ros1_ci_1" ]; then
                         git clone https://github.com/morg1207/ros1_ci_1.git
+                        echo 'no existe el repositorio'
                     else
                         cd ros1_ci_1
                         git pull origin master
+                        echo 'existe el repositorio'
                     fi
                     '''
             }
